@@ -1,3 +1,5 @@
+
+
 class Colors:
     black = "\u001b[30m"
     red = "\u001b[31m"
@@ -49,16 +51,35 @@ class Colors:
     resetColor = "\u001b[0m"
 
 
-
-def printAllColors():
+def print_all_colors():
     for j in range(0, 240):
         code = 1 * 16 + j
-        Code = code.__str__()
-        out = "\u001b[48;5;" + Code + "m" + " "
-        jOut = 16 + j
-        JOut = jOut.__str__()
-        print(out + JOut + Colors.resetColor + Colors.resetColor, end="")
+        code = code.__str__()
+        out = "\u001b[48;5;" + code + "m" + " "
+        j_out = 16 + j
+        j_out = j_out.__str__()
+        print(out + j_out + Colors.resetColor + Colors.resetColor, end="")
         if j == 239:
             print(Colors.resetColor + "\n")
-def styledText(text:str, Color:str):
-    return Color+text+Colors.resetColor
+
+
+def styled_text(text: str, color: str):
+    return color + text + Colors.resetColor
+
+
+def throw_exception(exception: str, error_code: str):
+    return print(
+        Colors.bold +
+        Colors.red +
+        "Exception:" +
+        Colors.gray +
+        " " +
+        exception +
+        "\n" +
+        Colors.red +
+        "Error:" +
+        Colors.gray +
+        " " +
+        error_code +
+        Colors.resetColor
+    )

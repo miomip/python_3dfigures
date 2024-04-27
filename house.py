@@ -1,6 +1,7 @@
 from math import sqrt
 import turtle as tl
-from lib.Colors import Colors
+from lib.Colors import *
+from lib.DictTools import *
 
 
 def small_house():
@@ -30,21 +31,15 @@ def big_house():
 def house():
     types = {
         'small': small_house,
-        'big': big_house
+        'big': big_house,
+        '': ''
     }
-    inp = input("what size do you want?")
+    print("Sizes you can pick:", end=" ")
+    print_dictionary(types)
+
+    inp = input("what size do you want?: ")
     if types.get(inp.lower()) is None:
-        return print(Colors.bold
-                     + Colors.red
-                     + "Exception:"
-                     + Colors.gray
-                     + " IllegalArgumentException"
-                     + "\n"
-                     + Colors.red
-                     + "Error:"
-                     + Colors.gray
-                     + " -1"
-                     + Colors.resetColor
-                     )
+        throw_exception("IllegalArgumentException", "-1")
+        return house()
     else:
         return types[inp.lower()]()

@@ -5,11 +5,12 @@ from sideeye import sideeye
 from smile import smile
 from normal import normal
 from sad import sad
-from lib.Colors import Colors, printAllColors
+from lib.Colors import *
+from lib.DictTools import *
 
 
 def main():
-    # liste(dictionary) over mulig inputs
+    # list(dictionary) of allowed inputs
     inputs = {
         'smile emoji': smile,
         'sad emoji': sad,
@@ -17,27 +18,17 @@ def main():
         'cute emoji': cute_smile,
         'side eye emoji': sideeye,
         'weird guy emoji': snurt,
-        'all colors': printAllColors,
-        'house': house
+        'all colors': print_all_colors,
+        'house': house,
+        '': ''
     }
-    print("You can draw:")
-    for key, values in inputs.items():
-        print(key, end=", ")
+    print("You can draw:", end=" ")
+    print_dictionary(inputs)
 
-    inp = input("\nWhat do you want to draw: ")
-    if inputs.get(inp.lower()) == None:
-        return print(Colors.bold
-                     + Colors.red
-                     + "Exception:"
-                     + Colors.gray
-                     + " IllegalArgumentException"
-                     + "\n"
-                     + Colors.red
-                     + "Error:"
-                     + Colors.gray
-                     + " -1"
-                     + Colors.resetColor
-                     )
+    inp = input("What do you want to draw: ")
+    if inputs.get(inp.lower()) is None:
+        throw_exception("IllegalArgumentException", "-1")
+        return main()
     else:
         return inputs[inp.lower()]()
 
