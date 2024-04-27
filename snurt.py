@@ -1,8 +1,8 @@
-from turtle import * # type: ignore
+from turtle import *  # type: ignore
 
 
-def snurt():
-    screensize(500,500,bg="black")
+def snurt():  # ignore error
+    screensize(500, 500, bg="black")
     begin_fill()
     circle(120, color("Yellow"))
     end_fill()

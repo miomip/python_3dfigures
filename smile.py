@@ -1,7 +1,7 @@
 from turtle import * # type: ignore
 
 
-def Smile():
+def smile():
     pensize(5)
     screensize(500,500, bg="black")
     begin_fill()

@@ -3,7 +3,7 @@ from turtle import * # type: ignore
 
 def normal():
     pensize(5)
-    screensize(500,500,bg="black")
+    screensize(500, 500, bg="black")
     begin_fill()
     circle(120, color("Yellow"))
     end_fill()
