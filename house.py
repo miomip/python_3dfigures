@@ -1,7 +1,7 @@
 from math import sqrt
 import turtle as tl
 from lib.Colors import *
-from skole.DictTools import *
+from skole.lib.DictTools import *
 
 
 def small_house():
