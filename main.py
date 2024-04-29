@@ -6,7 +6,7 @@ from smile import smile
 from normal import normal
 from sad import sad
 from lib.Colors import *
-from skole.lib.DictTools import *
+from lib.DictTools import *
 
 
 def main():
