@@ -1,4 +1,6 @@
+from random_colors import random_colors
 from house import house
+from polygonal_shape import polygonal_shape
 from snurt import snurt
 from cuteSmile import cute_smile
 from sideeye import sideeye
@@ -10,7 +12,7 @@ from lib.DictTools import *
 
 
 def main():
-    # list(dictionary) of allowed inputs
+    # liste(dictionary) av tillate inputs
     inputs = {
         'smile emoji': smile,
         'sad emoji': sad,
@@ -20,6 +22,8 @@ def main():
         'weird guy emoji': snurt,
         'all colors': print_all_colors,
         'house': house,
+        'random colors': random_colors,
+        'polygonal shape': polygonal_shape,
         '': ''
     }
     print("You can draw:", end=" ")
@@ -32,6 +36,6 @@ def main():
     else:
         return inputs[inp.lower()]()
 
-
+# Hovedfunsjon
 if __name__ == "__main__":
     main()
