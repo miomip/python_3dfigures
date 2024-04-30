@@ -1,4 +1,4 @@
-from turtle import * # type: ignore
+from turtle import *  # type: ignore
 
 
 def normal():

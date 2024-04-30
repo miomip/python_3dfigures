@@ -1,11 +1,10 @@
-from math import * # type: ignore
 import turtle as tl
-from lib.Colors import *
-from lib.DictTools import *
+from math import *  # type: ignore
+
 
 def polygonal_shape():
     farger = ["Red", "Green", "Blue", "Black", "Yellow", "Orange", "Pink", "Cyan", "White"]
-    tl.speed(10**1000000)
+    tl.speed(10 ** 1000000)
     while True:
         sides = int(input("How many sides do you want?: "))
         if sides == int(sides):
@@ -21,7 +20,7 @@ def polygonal_shape():
     tl.fillcolor(color)
     tl.pencolor(color)
     for i in range(sides):
-        tl.fd(1000/sides)
-        tl.right(360/sides)
+        tl.fd(1000 / sides)
+        tl.right(360 / sides)
     tl.end_fill()
     tl.exitonclick()

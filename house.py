@@ -28,7 +28,6 @@ def big_house():
     return 0
 
 
-
 def house():
     types = {
         'small': small_house,

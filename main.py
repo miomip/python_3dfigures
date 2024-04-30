@@ -1,7 +1,7 @@
 from random_colors import random_colors
 from house import house
 from polygonal_shape import polygonal_shape
-from snurt import snurt
+from weird_guy_emoji import weird_guy_emoji
 from cuteSmile import cute_smile
 from sideeye import sideeye
 from smile import smile
@@ -19,7 +19,7 @@ def main():
         'normal emoji': normal,
         'cute emoji': cute_smile,
         'side eye emoji': sideeye,
-        'weird guy emoji': snurt,
+        'weird guy emoji': weird_guy_emoji,
         'all colors': print_all_colors,
         'house': house,
         'random colors': random_colors,
@@ -35,6 +35,7 @@ def main():
         return main()
     else:
         return inputs[inp.lower()]()
+
 
 # Hovedfunsjon
 if __name__ == "__main__":
