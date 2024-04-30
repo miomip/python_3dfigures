@@ -15,6 +15,7 @@ downloads/
 eggs/
 .eggs/
 parts/
+.vscode/
 sdist/
 var/
 wheels/
