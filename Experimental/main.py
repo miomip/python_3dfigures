@@ -22,16 +22,15 @@ while running:
 
     keys = pygame.key.get_pressed()
 
-    match keys:
-        case pygame.K_a:
-            player_pos.x -= 300 * dt
-        case pygame.K_d:
-            player_pos.x += 300 * dt
-        case pygame.K_s:
-            player_pos.y -= 300 * dt
-        case pygame.K_w:
-            player_pos += 300 * dt
-
+    if keys[pygame.K_w]:
+        player_pos.y -= 300 * dt
+    if keys[pygame.K_s]:
+        player_pos.y += 300 * dt
+    if keys[pygame.K_a]:
+        player_pos.x -= 300 * dt
+    if keys[pygame.K_d]:
+        player_pos.x += 300 * dt
+        
     pygame.display.flip()
 
     dt = clock.tick(120) / 1000
