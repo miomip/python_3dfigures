@@ -4,35 +4,34 @@ from numpy import matrix
 from time import sleep
 from random import randint
 
-pygame.init()
-display = pygame.display
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
-done = False
-dt = 0
 
+white = (255, 255, 255)
 width = 500
 height = 500
-white = (255, 255, 255)
+
+pygame.init()
+display = pygame.display
+screen = display.set_mode((width, height))
+display.set_caption("3D")
 
 
-display.set_caption("Shape")
+running = True
 
-player_pos = pygame.Vector2(screen.get_width()/2, screen.get_height()/2)
+x = 50
 
-spoints = 50
 points_3d = (
-    ( spoints,  spoints,  spoints),
-    (-spoints,  spoints,  spoints),
-    ( spoints, -spoints,  spoints),
-    ( spoints,  spoints, -spoints),
-    (-spoints,  spoints, -spoints),
-    ( spoints, -spoints, -spoints),
-    (-spoints, -spoints, -spoints),
-    (-spoints, -spoints,  spoints),
+    ( x,  x,  x),
+    (-x,  x,  x),
+    ( x, -x,  x),
+    ( x,  x, -x),
+    (-x,  x, -x),
+    ( x, -x, -x),
+    (-x, -x, -x),
+    (-x, -x,  x),
 )
 
-rotation = [0,0,0]
+rotation = [0, 0, 0]
+
 
 def generate_x(x):
     return matrix([
@@ -56,14 +55,12 @@ def generate_z(x):
     ])
 
 
-
-
-while not done:
-    for i in pygame.event.get():
-        if i.type == pygame.QUIT:
-            done = True
+while running:
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            running = False
             break
-    
+
     pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, 0, width, height))
 
     render_points = []
@@ -90,6 +87,5 @@ while not done:
     rotation[0] += pi / randint(100, 200)
     rotation[1] += pi / randint(100, 200)
 
-    dt = clock.tick(120) / 1000
-
-pygame.quit()
+    display.flip()
+    sleep(1/45)

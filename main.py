@@ -9,6 +9,7 @@ from normal import normal
 from sad import sad
 from lib.Colors import *
 from lib.DictTools import *
+from TD.cube import *
 
 
 def main():
@@ -24,6 +25,7 @@ def main():
         'house': house,
         'random colors': random_colors,
         'polygonal shape': polygonal_shape,
+        'cube': cube,
         '': ''
     }
     print("You can draw:", end=" ")
