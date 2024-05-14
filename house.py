@@ -25,7 +25,23 @@ def small_house():
 
 
 def big_house():
-    return 0
+    house_length = 120
+    tl.right(90)
+    tl.fd(house_length / 2)
+    tl.left(90)
+    for i in range(1, 4):
+        tl.fd(house_length)
+        tl.left(90)
+    tl.fd(house_length / 2)
+    tl.right(180)
+    tl.fd(house_length / 2)
+    tl.right(30)
+    math_for_roof = sqrt((house_length * 0.87) ** 2 + (house_length / 2) ** 2)
+    tl.fd(math_for_roof)
+    tl.right(120)
+    tl.fd(math_for_roof)
+    tl.hideturtle()
+    tl.exitonclick()
 
 
 def house():
