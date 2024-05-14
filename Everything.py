@@ -228,6 +228,7 @@ def slope():
 
 
 class Colors:
+    # Liste av Ansi farger. Brukes i sammenheng med printing av tekst til terminalen
     black = "\u001b[30m"
     red = "\u001b[31m"
     green = "\u001b[32m"
@@ -271,6 +272,7 @@ class Colors:
 
     resetColor = "\u001b[0m"
 
+# Denne printer alle fargene til terminalen.
 def print_all_colors():
     for j in range(0, 240):
         code = 1 * 16 + j
@@ -282,11 +284,11 @@ def print_all_colors():
         if j == 239:
             print(Colors.resetColor + "\n")
 
-
+# Printer tekst med farge til terminalen
 def styled_text(text: str, color: str):
     return print(color + text + Colors.resetColor)
 
-
+# Skriver en feilkode til terminalen
 def throw_exception(exception: str, error_code: str):
     return print(
         Colors.bold +
@@ -304,7 +306,7 @@ def throw_exception(exception: str, error_code: str):
         Colors.resetColor
     )
 
-
+# Printer ut alle elementene i en Liste(Type: Dictionary) til terminalen
 def print_dictionary(dictionary: dict):
     for key, values in dictionary.items():
         if key is values:
@@ -315,7 +317,7 @@ def print_dictionary(dictionary: dict):
 
 from turtle import *  # type: ignore
 
-
+# Lager en søt emoji
 def cute_smile():
     pensize(5)
     screensize(500, 500, bg="black")
@@ -352,7 +354,7 @@ import turtle as tl
 from lib.Colors import *
 from lib.DictTools import *
 
-
+# Lager et lite hus
 def small_house():
     house_length = 50
     tl.right(90)
@@ -372,7 +374,7 @@ def small_house():
     tl.hideturtle()
     tl.exitonclick()
 
-
+# Lager et stort hus
 def big_house():
     house_length = 120
     tl.right(90)
@@ -392,7 +394,7 @@ def big_house():
     tl.hideturtle()
     tl.exitonclick()
 
-
+# Tar input for hvilket hus som skal lages
 def house():
     types = {
         'small': small_house,
@@ -401,8 +403,9 @@ def house():
     }
     print("Sizes you can pick:", end=" ")
     print_dictionary(types)
-
+    
     inp = input("what size do you want?: ")
+    # Kjekker etter om det som er skrevet inn er en gyldig verdi 
     if types.get(inp.lower()) is None:
         throw_exception("IllegalArgumentException", "-1")
         return house()
@@ -412,7 +415,7 @@ def house():
 
 from turtle import *  # type: ignore
 
-
+# Lager en nøytral emoji 
 def normal():
     pensize(5)
     screensize(500, 500, bg="black")
@@ -449,14 +452,17 @@ def normal():
 import turtle as tl
 from math import *  # type: ignore
 
-
+# Lager en likesidetflerkant
 def polygonal_shape():
+    # Liste over farger (Type: Dictionary)
     farger = ["Red", "Green", "Blue", "Black", "Yellow", "Orange", "Pink", "Cyan", "White"]
     tl.speed(10 ** 1000000)
+    # Kjekker for input for antall sider og kjører til en gyldig verdi er gitt
     while True:
         sides = int(input("How many sides do you want?: "))
         if sides == int(sides):
             break
+    # Kjekker for input for hvilken farge på sidene og kjører til en gyldi verdi er gitt
     while True:
         print("You can pick from: Red, Green, Blue, Black, Yellow, Orange, Pink, Cyan, White")
         color = input("What color do you want it to be?: ")
@@ -477,7 +483,7 @@ def polygonal_shape():
 import random
 import turtle as tl
 
-
+# Lager en linje med mange tilfeldige farger som går i alle rettninger
 def random_colors():
     tl.colormode(255)
     tl.speed(1000)
@@ -496,7 +502,7 @@ def random_colors():
 
 from turtle import *  # type: ignore
 
-
+# Lager en trist emoji
 def sad():
     pensize(5)
     screensize(500, 500, bg="black")
@@ -531,7 +537,7 @@ def sad():
 
 from turtle import *  # type: ignore
 
-
+# Snurt emoji
 def sideeye():
     screensize(500, 500, bg="black")
     begin_fill()
@@ -557,7 +563,7 @@ def sideeye():
 
 from turtle import *  # type: ignore
 
-
+# smilete emoji
 def smile():
     pensize(5)
     screensize(500, 500, bg="black")
@@ -592,7 +598,7 @@ def smile():
 
 from turtle import *  # type: ignore
 
-
+# Denne er en emoji som jeg ikke greier å forklare humøret på
 def weird_guy_emoji():  # ignore error
     screensize(500, 500, bg="black")
     begin_fill()
@@ -648,10 +654,13 @@ def main():
         'slope': slope,
         '': ''
     }
+    # printer ut alle gyldige inputs
     print("You can draw:", end=" ")
     print_dictionary(inputs)
 
     inp = input("What do you want to draw: ")
+
+    # Kjekker for om gitt input er gyldig
     if inputs.get(inp.lower()) is None:
         throw_exception("IllegalArgumentException", "-1")
         return main()
