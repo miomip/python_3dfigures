@@ -5,28 +5,34 @@ from time import sleep
 from random import randint
 
 def cube():
-    white = (255, 255, 255)
-    width = 500
+    white = (255, 255, 255) # Standar hvit farge
+    # Bredden og lengden av vinduet, det kjører i
+    width = 500 
     height = 500
-    
+
+    # starter miljøet vi kan kjøre i. Og setter høyden og gir vinduet et navn
     pygame.init()
     display = pygame.display
     screen = display.set_mode((width, height))
     display.set_caption("3D")
-    
+
+    # På grunn av at den må oppdatere seg, har vi en variabel for spill klokken og deltaTime. med andre ord tid og oppdeling i den tiden.
     clock = pygame.time.Clock()
     dt = 0
-    
+
+    # variabel for om den fortsatt kjører
     running = True
-    
+
+    # Hastigheten som kan snu rundt figuren med, men du må ta ett lavere tall for høyere fart pga. vektor matten
     turning_speed = 190
-    
+
+    # Utgangspunktet til punktene som alle sidene av kuben skal ha.
     x = 50
     
-    
+    # Start rotasjon
     rotation = [0, 0, 0]
     
-    
+    # Generer X Y Z kordinatene 
     def generate_x(x):
         return matrix([
             [1, 0, 0],
@@ -47,7 +53,7 @@ def cube():
             [sin(x), cos(x), 0],
             [0, 0, 1]
         ])
-    
+    # Punktene i 3d
     def points(x, y, z):
         points_3d = (
             ( x,  y,  z),
@@ -63,17 +69,19 @@ def cube():
 
 
     pointers = points(x, x, x)
-    
+
+    #Kjører helt til `running` variablen er satt til False
     while running:
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 running = False
                 break
-    
+        # Fjerner tidligere tegnet linjet, før de nye skal tegnes på skjermen
         pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, 0, width, height))
     
         render_points = []
-    
+
+        # Tegner punktene
         for p in pointers:
     
             m = matrix([
@@ -93,7 +101,8 @@ def cube():
             for p2 in render_points[p1 + 1:]:
                 pygame.draw.line(screen, white, render_points[p1], p2)
     
-    
+
+        # Bevegelse kode for å rotere rundt kuben
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
              rotation[0] += (pi / turning_speed) * dt
@@ -103,7 +112,7 @@ def cube():
              rotation[1] -= (pi / turning_speed) * dt
         if keys[pygame.K_d]:
              rotation[1] += (pi / turning_speed) * dt
-        
+        # Klokken og annen info til skjermen
         dt = clock.tick(120) / 10
         display.flip()
         sleep(1/45)
