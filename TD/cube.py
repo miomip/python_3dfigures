@@ -23,16 +23,6 @@ def cube():
     
     x = 50
     
-    points_3d = (
-        ( x,  x,  x),
-        (-x,  x,  x),
-        ( x, -x,  x),
-        ( x,  x, -x),
-        (-x,  x, -x),
-        ( x, -x, -x),
-        (-x, -x, -x),
-        (-x, -x,  x),
-    )
     
     rotation = [0, 0, 0]
     
@@ -58,6 +48,21 @@ def cube():
             [0, 0, 1]
         ])
     
+    def points(x, y, z):
+        points_3d = (
+            ( x,  y,  z),
+            (-x,  y,  z),
+            ( x, -y,  z),
+            ( x,  y, -z),
+            (-x,  y, -z),
+            ( x, -y, -z),
+            (-x, -y, -z),
+            (-x, -y,  z),
+        )
+        return points_3d
+
+
+    pointers = points(x, x, x)
     
     while running:
         for e in pygame.event.get():
@@ -69,7 +74,7 @@ def cube():
     
         render_points = []
     
-        for p in points_3d:
+        for p in pointers:
     
             m = matrix([
             [p[0]],
@@ -91,9 +96,9 @@ def cube():
     
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
-             rotation[0] -= (pi / turning_speed) * dt
-        if keys[pygame.K_s]:
              rotation[0] += (pi / turning_speed) * dt
+        if keys[pygame.K_s]:
+             rotation[0] -= (pi / turning_speed) * dt
         if keys[pygame.K_a]:
              rotation[1] -= (pi / turning_speed) * dt
         if keys[pygame.K_d]:
